@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="robots" content="noindex">
+        {% block meta %}
+        
+        {% endblock meta %}
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'panel/assets/images/favicon.png' %}">
+        <link href="{% static 'panel/assets/node_modules/datatables/media/css/dataTables.bootstrap4.css' %}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{% static 'panel/dist/css/style.min.css' %}" rel="stylesheet">
+        <!-- Date picker plugins css -->
+        <link href="{% static 'panel/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css' %}" rel="stylesheet" type="text/css"/>
+        <!--alerts CSS -->
+        <link href="{% static 'panel/assets/node_modules/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        {% block css %}
+
+        {% endblock css %}
+    </head>
+
+    <body class="skin-blue fixed-layout">
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label">Panel</p>
+            </div>
+        </div>
+        <div id="main-wrapper">
+            <header class="topbar">
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/panel/">
+                            <img src="{% static 'panel/assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                            <span>
+                                <img src="{% static 'panel/assets/images/hearmagan.png' %}" class="light-logo" alt="homepage" />
+                            </span>
+                        </a>
+                    </div>
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                            <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                        </ul>
+                        <ul class="navbar-nav my-lg-0">
+                            <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="/" style="color: black;">SİTEYE GİT</a></li>
+                            <li class="nav-item dropdown u-pro">
+                                <a class="nav-link" href="/hesaplar/cikis/"><i class="fa fa-power-off"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="left-sidebar">
+                <div class="scroll-sidebar">
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li> <a class="waves-effect waves-dark" href="/panel/kisiler/" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Kişiler</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="/panel/urunler/" aria-expanded="false"><i class="fa fa-cubes"></i><span class="hide-menu">Ürünler</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="/panel/alis-tablosu/" aria-expanded="false"><i class="fa fa-shopping-basket"></i><span class="hide-menu">Alış Tablosu</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="/panel/satis-tablosu/" aria-expanded="false"><i class="fa fa-lira-sign"></i><span class="hide-menu">Satış Tablosu</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <div class="page-wrapper">
+                {% block content %}
+
+                {% endblock content %}
+            </div>
+            <footer class="footer">© 2020 developed by Hüseyin Emre Armağan</footer>
+        </div>
+
+        <script src="{% static 'panel/assets/node_modules/jquery/jquery-3.2.1.min.js' %}"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="{% static 'panel/assets/node_modules/popper/popper.min.js' %}"></script>
+        <script src="{% static 'panel/assets/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="{% static 'panel/dist/js/perfect-scrollbar.jquery.min.js' %}"></script>
+        <!--Wave Effects -->
+        <script src="{% static 'panel/dist/js/waves.js' %}"></script>
+        <!--Menu sidebar -->
+        <script src="{% static 'panel/dist/js/sidebarmenu.js' %}"></script>
+        <!--stickey kit -->
+        <script src="{% static 'panel/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+        <script src="{% static 'panel/assets/node_modules/sparkline/jquery.sparkline.min.js' %}"></script>
+        <!--Custom JavaScript -->
+        <script src="{% static 'panel/dist/js/custom.min.js' %}"></script>
+        <!-- This is data table -->
+        <script src="{% static 'panel/assets/node_modules/datatables/datatables.min.js' %}"></script>
+        <!-- Date Picker Plugin JavaScript -->
+        <script src="{% static 'panel/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+        <!-- Sweet-Alert  -->
+        <script src="{% static 'panel/assets/node_modules/sweetalert/sweetalert.min.js' %}"></script>
+        <script src="{% static 'panel/assets/node_modules/sweetalert/jquery.sweet-alert.custom.js' %}"></script>
+        <!-- start - This is for export functionality only -->
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+        <!-- end - This is for export functionality only -->
+        <script>
+        $(function() {
+            $('#myTable').DataTable();
+            $(function() {
+                var table = $('#example').DataTable({
+                    "columnDefs": [{
+                        "visible": false,
+                        "targets": 2
+                    }],
+                    "order": [
+                        [2, 'asc']
+                    ],
+                    "displayLength": 25,
+                    "drawCallback": function(settings) {
+                        var api = this.api();
+                        var rows = api.rows({
+                            page: 'current'
+                        }).nodes();
+                        var last = null;
+                        api.column(2, {
+                            page: 'current'
+                        }).data().each(function(group, i) {
+                            if (last !== group) {
+                                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                last = group;
+                            }
+                        });
+                    }
+                });
+                // Order by the grouping
+                $('#example tbody').on('click', 'tr.group', function() {
+                    var currentOrder = table.order()[0];
+                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                        table.order([2, 'desc']).draw();
+                    } else {
+                        table.order([2, 'asc']).draw();
+                    }
+                });
+            });
+        });
+        $('#example23').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                // 'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+        $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
+        </script>
+        
+        {% block js %}
+
+        {% endblock js %}
+    </body>
+</html>

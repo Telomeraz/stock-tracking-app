@@ -1,0 +1,42 @@
+{% extends 'panel/base_panel.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Kişi Düzenle</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Kişi Düzenle</h4>
+            </div>
+            <div class="col-md-7 align-self-center text-right">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/panel/">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="/panel/kisiler/">Kişiler</a></li>
+                        <li class="breadcrumb-item active">Kişi Düzenle</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Kişi Düzenle</h4>
+                        <form action="." method="POST" class="mt-4">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Kişi adı</label>
+                                <input type="text" class="form-control" name="name" placeholder="Bir kişi adı giriniz" value="{{person.name}}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

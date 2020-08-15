@@ -1,0 +1,65 @@
+{% extends 'panel/base_panel.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Panel</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Ana Sayfa</h4>
+            </div>
+            <div class="col-md-7 align-self-center text-right">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Ana Sayfa</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-white bg-dark">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">KİŞİLER</h4></div>
+                    <div class="card-body">
+                        <p class="card-text">Kişi tablosunu görüntülemek için tıklayınız.</p>
+                        <a href="/panel/kisiler/" class="btn btn-primary">Kişilere git</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-white bg-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">ÜRÜNLER</h4></div>
+                    <div class="card-body">
+                        <p class="card-text">Ürün tablosunu görüntülemek için tıklayınız.</p>
+                        <a href="/panel/urunler/" class="btn btn-dark">Ürünlere git</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-white bg-primary">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">ALIŞ TABLOSU</h4></div>
+                    <div class="card-body">
+                        <p class="card-text">Alış tablosunu görüntülemek için tıklayınız.</p>
+                        <a href="/panel/alis-tablosu/" class="btn btn-dark">Alış tablosuna git</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-white bg-danger">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">SATIŞ TABLOSU</h4></div>
+                    <div class="card-body">
+                        <p class="card-text">Satış tablosunu görüntülemek için tıklayınız.</p>
+                        <a href="/panel/satis-tablosu/" class="btn btn-dark">Satış tablosuna git</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

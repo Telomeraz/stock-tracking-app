@@ -1,0 +1,137 @@
+{% extends 'panel/base_panel.html' %}
+{% load static %}
+{% load products_tags %}
+
+{% block meta %}
+    <title>Alış Tablosu</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Alışlar</h4>
+            </div>
+            <div class="col-md-7 align-self-center text-right">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/panel/">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active">Alışlar</li>
+                    </ol>
+                    <button type="button" onclick="window.location.href='/panel/alis-ekle/';" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Yeni Alış Kaydı Oluştur</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Alış Tablosu</h4>
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Satıcı</th>
+                                        <th>Ürün Bilgileri</th>
+                                        <th>Fiyat Bilgileri</th>
+                                        <th>Tarih</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for purchase in purchases %}
+                                        <tr>
+                                            <td>{{purchase.person.name}}</td>
+                                            <td>
+                                                <table class="display nowrap table table-hover table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Ürün Adı</th>
+                                                            <th>Birim Fiyatı</th>
+                                                            <th>Alınan Miktar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    {% for product in purchase.products.all %}
+                                                        {% purchase_products_info purchase product as pp %}
+                                                        <tr>
+                                                            <td>
+                                                                {{product.name}}
+                                                            </td>
+                                                            <td>
+                                                                {{pp.unit_price|currency_format}}
+                                                            </td>
+                                                            <td>
+                                                                {{pp.quantity}} {{product.stock_type}}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <table class="display nowrap table table-hover table-striped table-bordered">
+                                                    <tr>
+                                                        <td>
+                                                            KDV tutarı
+                                                        </td>
+                                                        <td>
+                                                            {{purchase.tax_amount|currency_format}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            KDV hariç fiyat
+                                                        </td>
+                                                        <td>
+                                                            {{purchase.price_excluding_tax|currency_format}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            KDV dahil fiyat
+                                                        </td>
+                                                        <td>
+                                                            {{purchase.total_price|currency_format}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td>{{purchase.purchase_date}}</td>
+                                            <td>
+                                                <a href="/panel/alis-duzenle/{{purchase.id}}/" class="btn btn-info btn-rounded" title="Düzenle">
+                                                    <i class="fa fa-edit fa-xs"></i>
+                                                </a>
+                                                <a href="#" onclick="warnUser({{purchase.id}})" class="btn btn-danger btn-rounded" title="Sil">
+                                                    <i class="fa fa-trash fa-xs"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    <script>
+        //Warning Message
+        function warnUser(purchase_id) {
+            swal({
+                title: "Bu kaydı silmek istediğinize emin misiniz?",
+                text: "Kayıt silindiğinde stoklarınızda bir değişim olmaz, sadece bu kaydı tablonuzdan kaldırmış olursunuz.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Evet, kaydı sil!",
+                cancelButtonText: "İptal"
+            });
+            $('.swal2-confirm').click(function(){
+                window.location.href = `/panel/alis-sil/${purchase_id}/`;
+            });
+        }
+    </script>
+{% endblock js %}
